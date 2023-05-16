@@ -16,7 +16,7 @@ function App() {
 
 useEffect(() =>{
   axios
-  .get("http://localhost:3001/notas")
+  .get("https://back-notas-production.up.railway.app/notas")
   .then(response =>{
     setNotas(response.data)
   })
@@ -30,7 +30,7 @@ useEffect(() =>{
       nota: newNota,
     };
 
-    axios.post("http://localhost:3001/api/notes", noteObject).then((response) => {
+    axios.post("https://back-notas-production.up.railway.app/api/notes", noteObject).then((response) => {
       setNotas(notas.concat(response.data));
       setNewNota("");
     });
@@ -42,7 +42,7 @@ useEffect(() =>{
   };
 
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/notas/${id}`).then(() => {
+    axios.delete(`https://back-notas-production.up.railway.app/notas/${id}`).then(() => {
       setNotas(notas.filter((nota) => nota.id !== id));
     });
   };
