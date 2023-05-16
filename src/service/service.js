@@ -1,4 +1,4 @@
-import axios from "axios";
+/* import axios from "axios";
 const URL = "http://localhost:3001/notas";
 
 const getAll = () => {
@@ -8,3 +8,4 @@ const getAll = () => {
 
 
 export default getAll;
+ */

@@ -1,6 +1,6 @@
 /* import axios from 'axios'; */
 import { useState, useEffect } from "react";
-import getAll from "./service/service";
+/* import getAll from "./service/service"; */
 import Notas from "./components/Notas/Notas";
 /* import Form from "./components/Form/Form"; */
 import "./App.css";
@@ -13,20 +13,24 @@ function App() {
   const [newNota, setNewNota] = useState("");
 
   //LLamado a la API del servidor para obtener las notas y se almacenarlas en el estado.
-  useEffect(() => {
-    getAll().then((initialNotes) => {
-      setNotas(initialNotes);
-    });
-  }, []);
 
-  //Funcion para para agregar nueva notas y que se almacenen en el estado newNota.
+useEffect(() =>{
+  axios
+  .get("http://localhost:3001/notas")
+  .then(response =>{
+    setNotas(response.data)
+  })
+},[])
+
+
+//Funcion para para agregar nueva notas y que se almacenen en el estado newNota.
   const addNote = (event) => {
     event.preventDefault();
     const noteObject = {
       nota: newNota,
     };
 
-    axios.post("http://localhost:3001/notas", noteObject).then((response) => {
+    axios.post("http://localhost:3001/api/notes", noteObject).then((response) => {
       setNotas(notas.concat(response.data));
       setNewNota("");
     });
